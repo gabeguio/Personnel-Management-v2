@@ -19,18 +19,6 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
 
 ## Architecture Diagram
 ![Architecture of Personel Management](../documentation/resources/architecture/Personnel-Management-Architecture-v1.png "Personel Management Architecture")
-
-## Deploying Cloud Infrastructure (TODO: Jared Mai)
- - TODO: Link to installation notes
- - TODO: Docker Containers in a VM
- 
-## Connecting Target Apps (TODO: Gabe Guio)
- - TODO: Connecting application to Local SailPoint
- - TODO: Summarizing permissions and roles in Slack
- 
-## Building Local Repo (TODO: Luis Garcia Q)
- - TODO: Build basic angular app and push to repo
- - TODO: Build spring app and push to repo
  
 ## API Endpoints
  ### 1. POST /user
@@ -138,13 +126,9 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
   **Response**
     - 204: Delete Success
 
-## Entities from Identity IQ (TODO) 
- - TODO: Identify Models in Spring
- - TODO: Complete an ERD
+## Entities from Identity IQ
 
-## Front UI Images (TODO)
- - TODO: Documenting components from PrimeNG
- - TODO: Assembling UI documentation
+## Front UI Images
  
  
  
