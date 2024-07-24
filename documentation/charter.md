@@ -24,7 +24,7 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
  - TODO: Link to installation notes
  - TODO: Docker Containers in a VM
  
-## Connecting Target Apps (TODO)
+## Connecting Target Apps (TODO: Gabe Guio)
  - TODO: Connecting application to Local SailPoint
  - TODO: Summarizing permissions and roles in Slack
  
