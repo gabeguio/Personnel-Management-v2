@@ -12,6 +12,10 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
  2. As a manager, I would get a list of users and their roles from SailPoint.
  3. As a manager, I would like update a user's role or personal information in SailPoint.
  4. As a manager, I would like to delete a users and remove them from SailPoint.
+ 5. As a manager, I would like to get a list of users from SailPoint.
+ 6. MAYBE As a manager, I would like to get a list of users by manager from SailPoint.
+ 7. As an admin, I would like to manage users in Entra ID from SailPoint
+ 8. As an admin, I would like to manage permissions/roles/entitlements in Target Application from SailPoint.
 
 ## Architecture Diagram
 ![Architecture of Personel Management](../documentation/resources/architecture/Personnel-Management-Architecture-v1.png "Personel Management Architecture")
@@ -29,20 +33,23 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
  - TODO: Build spring app and push to repo
  
 ## API Endpoints
- 1. POST /user
+ ### 1. POST /user
  
-  ### Request Body #1: Create User
+  **Request Body #1: Create User**
+  
     {
       "userName": "Mock.User"
     }
 
-  ### Request Body #2: Create User and Role
+  **Request Body #2: Create User and Role**
+  
     {
       "userName": "Mock.User"
       "role": "Full members"
     }
 
-  ### Request Body #3: Create User with Personal Information  
+  **Request Body #3: Create User with Personal Information**
+  
     {
       "userName": "Mock.User",
       "name": {
@@ -63,7 +70,8 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
       ]
     }
 
-  ### Request Body #4: Create User with Personal Information and Role
+  **Request Body #4: Create User with Personal Information and Role**
+  
     {
       "userName": "Mock.User",
       "name": {
@@ -85,21 +93,21 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
       "role": "Full members"
     }
 
-  ### Response 
+  **Response** 
    - 201: Created Succesfully
    - 409: Create Failed
 
- 2. GET /user/{userId}
-
-  ### Response
-    - 200: Get Success
-      - Request Body: User Data
-    - 404: Get Failed
-      - User not found
+ ### 2. GET /user/{userId}
+     
+  **Response** 
+   - 200: Get Succes
+     - Request Body: User Data
+   - 404: User not found
     
- 3. POST /user/{userId}
+ ### 3. POST /user/{userId}
  
-  ### Request Body #1: Update a User with Personal Information and Role
+  **Request Body #1: Update a User with Personal Information and Role**
+  
     {
       "userName": "Mock.User",
       "name": {
@@ -121,13 +129,13 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
       "role": "Full members"
     }
     
-  ### Response
+  **Response**
    - 200: Update Success
    - 404: User Not found
     
- 4. DELETE /user/{userId}
- 
-	### Response
+ ### 4. DELETE /user/{userId}
+    
+  **Response**
     - 204: Delete Success
 
 ## Entities from Identity IQ (TODO) 
