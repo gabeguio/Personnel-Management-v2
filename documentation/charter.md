@@ -28,7 +28,7 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
  - TODO: Connecting application to Local SailPoint
  - TODO: Summarizing permissions and roles in Slack
  
-## Building Local Repo (TODO)
+## Building Local Repo (TODO: Luis Garcia Q)
  - TODO: Build basic angular app and push to repo
  - TODO: Build spring app and push to repo
  
