@@ -10,11 +10,10 @@ Members: Luis Garcia, Jared Mai, Gabe Guio
 ## Use Cases
  1. As a manager, I would like to create new users and assign them to a role (set of entitlements) for a target application.
  2. As a manager, I would get a list of users and their roles from SailPoint.
- 3. As a manager, I would like update a user's role or personal information in SailPoint.
- 4. As a manager, I would like to delete a users and remove them from SailPoint.
- 5. As a manager, I would like to get a list of users by manager from SailPoint.
- 6. As an admin, I would like to manage users in Entra ID from SailPoint
- 7. As an admin, I would like to manage permissions/roles/entitlements in Target Application from SailPoint.
+ 3. As a manager, I would like to get a user by their unique identifier from SailPoint.
+ 4. As a manager, I would like update a user's role or personal information in SailPoint.
+ 5. As a manager, I would like to delete a users and remove them from SailPoint.
+ 6. As a manager, I would like to get a list of users by manager from SailPoint.
 
 ## Architecture Diagram
 ![Architecture of Personel Management](../documentation/resources/architecture/Personnel-Management-Architecture-v1.png "Personel Management Architecture")
