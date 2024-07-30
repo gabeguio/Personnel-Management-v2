@@ -23,9 +23,22 @@ public class UserController
     @DeleteMapping("/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable String userId)
     {
-        System.out.println(userId);
         String response = service.deleteUser(userId);
         return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<String> getUserById(@PathVariable String userId)
+    {
+        String response = service.getUserById(userId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<String> getAllUsers()
+    {
+        String response = service.getAllUsers();
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
 
