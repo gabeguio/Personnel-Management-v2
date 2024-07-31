@@ -48,7 +48,7 @@ public class UserService
         headers.setBasicAuth("spadmin", "admin");
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<String> response = template.
-                exchange("http://135.237.83.37:8080/identityiq/scim/v2/Users/",
+                exchange("http://135.237.83.37:8080/identityiq/scim/v2/Users",
                         HttpMethod.GET,
                         entity,
                         String.class);
@@ -68,5 +68,22 @@ public class UserService
                         String.class);
 
         return response.getBody();
+    }
+
+    public String updateUser(String userId, String body)
+    {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBasicAuth("spadmin", "admin");
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<>(body, headers);
+        ResponseEntity<String> response = template.
+                exchange("http://135.237.83.37:8080/identityiq/scim/v2/Users/" + userId,
+                        HttpMethod.PUT,
+                        entity,
+                        String.class);
+
+        return response.getBody();
+
     }
 }

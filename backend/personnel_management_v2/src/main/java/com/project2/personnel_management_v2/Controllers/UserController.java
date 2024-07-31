@@ -40,5 +40,12 @@ public class UserController
         String response = service.getAllUsers();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<String> createUser(@PathVariable String userId, @RequestBody String user)
+    {
+        String response = service.updateUser(userId, user);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
 }
 
