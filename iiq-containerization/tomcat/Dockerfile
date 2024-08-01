@@ -1,13 +1,15 @@
 FROM tomcat:9.0.91
 
-#Add waiting script
-COPY ./sp-mysql-ping.sh /home/sp-mysql-ping.sh
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk && \
+    apt-get install -y ant && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/ && \
+    rm -rf /var/cache/oracle-jdk8-installer;
 
-#Add waiting script
-RUN chmod +x /home/sp-mysql-ping.sh
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
 
 #Update all packages
 RUN apt update
 
-#Install mysql-client to check DB
-RUN apt install mysql-client -y
