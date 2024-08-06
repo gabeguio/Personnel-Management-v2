@@ -1,10 +1,11 @@
 package com.project2.personnel_management_v2.Services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.Collections;
+import java.util.Map;
 
 @Service
 public class UserService
@@ -18,6 +19,7 @@ public class UserService
         headers.setBasicAuth("spadmin","admin");
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(user, headers);
+
         ResponseEntity<String> response = template
                 .exchange("http://135.237.83.37:8080/identityiq/scim/v2" + "/Users",
                         HttpMethod.POST,
