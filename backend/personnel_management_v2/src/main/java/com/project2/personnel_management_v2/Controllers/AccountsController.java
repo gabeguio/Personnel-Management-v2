@@ -1,5 +1,6 @@
 package com.project2.personnel_management_v2.Controllers;
 
+import com.project2.personnel_management_v2.Models.Accounts.Account;
 import com.project2.personnel_management_v2.Services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,5 +36,19 @@ public class AccountsController
     {
         response = service.getAccountById(accountId);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{accountId}")
+    public ResponseEntity<String> deleteAccount(@PathVariable String accountId)
+    {
+        response = service.deleteAccount(accountId);
+        return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/{accountId}")
+    public ResponseEntity<String> updateAccount(@PathVariable String accountId, @RequestBody String body)
+    {
+        response = service.updateAccount(accountId, body);
+        return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
     }
 }
