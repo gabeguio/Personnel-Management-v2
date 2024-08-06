@@ -1,0 +1,45 @@
+package com.skillstorm.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+// this is the actual class where our OAuth is being accessed
+// can also include the usual security filters in here as necessary
+@Configuration
+@EnableMethodSecurity
+public class SecurityConfig {
+
+	private AuthenticationErrorHandler authenticationErrorHandler;
+	
+	public SecurityConfig(AuthenticationErrorHandler authenticationErrorHandler) {
+		this.authenticationErrorHandler = authenticationErrorHandler;
+	}
+	
+	@Bean
+	SecurityFilterChain httpSecurity(HttpSecurity http) throws Exception {
+		
+		return http
+				.authorizeHttpRequests(reqs -> {
+					
+					reqs.requestMatchers("/message/private").authenticated()
+						.anyRequest().permitAll();
+					
+				})
+				
+				.cors(Customizer.withDefaults())
+				
+				// here's our OAuth, finally!
+				.oauth2ResourceServer(oauth2 -> {
+					oauth2.jwt(Customizer.withDefaults())
+							.authenticationEntryPoint(authenticationErrorHandler);
+				})
+				
+				.build();
+		
+	}
+	
+}
