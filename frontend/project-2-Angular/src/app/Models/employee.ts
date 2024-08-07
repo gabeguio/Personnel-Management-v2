@@ -3,6 +3,7 @@ import { Email } from './email';
 
 export class Employee {
 
+    id: string;
     userName: string;
     name: Name;
     displayName: string;
@@ -10,9 +11,11 @@ export class Employee {
     active: boolean;
     password: string;
     emails: Email[];
+    managerDisplayName: string;
 
 
-    constructor(userName: string, name: Name, displayName: string, userType: string, active: boolean, password: string, emails: Email[]) {
+    constructor(id: string, userName: string, name: Name, displayName: string, userType: string, active: boolean, password: string, emails: Email[], managerDisplayName: string) {
+        this.id = id;
         this.userName = userName;
         this.name = name;
         this.displayName = displayName;
@@ -20,6 +23,7 @@ export class Employee {
         this.active = active;
         this.password = password;
         this.emails = emails;
+        this.managerDisplayName = managerDisplayName;
     }
 
 }
