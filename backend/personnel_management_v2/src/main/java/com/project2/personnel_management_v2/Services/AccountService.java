@@ -1,10 +1,8 @@
 package com.project2.personnel_management_v2.Services;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project2.personnel_management_v2.Models.Accounts.Account;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
@@ -16,31 +14,33 @@ public class AccountService
 
     public String createAccount(String account)
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Account acc;
 
-        // IGNORE LINE 23 THROUGH 28. IM TESTING HOW TO CREATE AN ACCOUNT OBJECT
-        try {
-            acc = objectMapper.readValue(account, Account.class);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Failed to convert JSON string to Account object", e);
-        }
-        // IGNORE LINE 23 THROUGH 28. IM TESTING HOW TO CREATE AN ACCOUNT OBJECT
+       try
+       {
+           HttpHeaders headers = new HttpHeaders();
+           headers.setContentType(MediaType.APPLICATION_JSON);
+           headers.setBasicAuth("spadmin","admin");
+           headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+           HttpEntity<String> entity = new HttpEntity<>(account, headers);
+
+           ResponseEntity<String> response = template
+                   .exchange("http://135.237.83.37:8080/identityiq/scim/v2/Accounts",
+                           HttpMethod.POST,
+                           entity,
+                           String.class);
+
+           return response.getBody();
+
+       }catch (HttpServerErrorException e)
+       {
+           if(!e.getResponseBodyAsString().contains("detail"))
+           {
+                return "Account has been created successfully";
+           }
+           throw e;
+       }
 
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBasicAuth("spadmin","admin");
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        HttpEntity<String> entity = new HttpEntity<>(account, headers);
-
-        ResponseEntity<String> response = template
-                .exchange("http://135.237.83.37:8080/identityiq/scim/v2/Accounts",
-                        HttpMethod.POST,
-                        entity,
-                        String.class);
-
-        return response.getBody();
     }
 
     public String getAllAccounts()
