@@ -1,0 +1,4 @@
+spring.application.name=oauth
+server.port=9001
+CLIENT_ORIGIN_URL=http://localhost:4200
+OAUTH_ISSUER=https://dev-wuwoj0rn24tcj1e2.us.auth0.com
