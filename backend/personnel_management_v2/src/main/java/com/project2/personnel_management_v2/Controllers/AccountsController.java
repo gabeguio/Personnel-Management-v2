@@ -69,16 +69,4 @@ public class AccountsController
         response = service.deleteAccount(accountId);
         return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
     }
-
-    /**
-     * Endpoint to update a single Salesforce account according to its ID
-     *
-     * @return a ResponseEntity containing an updated Salesforce account and the HTTP status code
-     */
-    @PutMapping("/{accountId}")
-    public ResponseEntity<String> updateAccount(@PathVariable String accountId, @RequestBody String body)
-    {
-        response = service.updateAccount(accountId, body);
-        return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
-    }
 }
