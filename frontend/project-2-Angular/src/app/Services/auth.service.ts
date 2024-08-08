@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return this.isLoggedIn;
+    return this.isLoggedIn ;
   }
 
   getHeaders() {
