@@ -121,8 +121,8 @@
                         <small class="ng-dirty ng-invalid" *ngIf="submitted && accountForm.controls.email?.errors?.email">Email must be a valid email address.</small>
                     </div>
                     <div class="p-dialog-footer">
-                        <button type="submit" pButton label="Save" [disabled]="accountForm.invalid"></button>
-                        <button type="button" pButton label="Cancel" (click)="hideDialog()"></button>
+                        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" [disabled]="accountForm.invalid" (click)="saveAccount()"></button>
                     </div>
                 </form>
             </ng-template>
