@@ -29,7 +29,7 @@ export class AccountService {
   }
 
   deleteAccount(id: string) {
-    return this.http.delete(this.url + 'api/users/' + id, { headers: this.getHeaders(), observe: 'response' });
+    return this.http.delete(this.url + 'api/accounts/' + id, { headers: this.getHeaders(), observe: 'response' });
   }
 
 }

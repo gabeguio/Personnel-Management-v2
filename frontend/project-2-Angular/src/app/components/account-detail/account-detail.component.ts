@@ -33,10 +33,10 @@ export class AccountDetailComponent implements OnInit {
                     if (roles.length === 0) {
                         roles = ['N/A'];
                     }
-                    communityNickname = accountResponse["urn:ietf:params:scim:schemas:sailpoint:1.0:Application:Schema:Azure Entra ID:account"].CommunityNickname || 'N/A';
                     jobTitle = accountResponse["urn:ietf:params:scim:schemas:sailpoint:1.0:Application:Schema:Azure Entra ID:account"].jobTitle || 'N/A';
                 } else if (accountResponse.application.displayName === 'Salesforce') {
                     accountAlias = accountResponse["urn:ietf:params:scim:schemas:sailpoint:1.0:Application:Schema:Salesforce:account"].Alias || 'N/A';
+                    communityNickname = accountResponse["urn:ietf:params:scim:schemas:sailpoint:1.0:Application:Schema:Salesforce:account"].CommunityNickname || 'N/A';
                     permissionSet = accountResponse["urn:ietf:params:scim:schemas:sailpoint:1.0:Application:Schema:Salesforce:account"].PermissionSet || ['N/A'];
                     if (permissionSet.length === 0) {
                         permissionSet = ['N/A'];

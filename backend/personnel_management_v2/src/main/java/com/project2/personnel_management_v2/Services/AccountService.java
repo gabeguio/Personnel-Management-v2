@@ -55,7 +55,7 @@ public class AccountService
        {
            if(!e.getResponseBodyAsString().contains("detail"))
            {
-                return new ResponseEntity<String>(HttpStatus.CREATED);
+                return new ResponseEntity<String>("success", HttpStatus.CREATED);
            }
            throw e;
        }

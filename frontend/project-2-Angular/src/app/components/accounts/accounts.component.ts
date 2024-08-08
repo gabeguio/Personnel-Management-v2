@@ -229,7 +229,12 @@ export class AccountsComponent implements OnInit {
                     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Account Created', life: 3000 });
                 },
                 error: (err) => {
-                    this.messageService.add({ severity: 'error', summary: 'Error', detail: "Unable to create account, check fields and try again", life: 3000 });
+                    if(err.status == 201) {
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Account Created', life: 3000 });
+                    } else {
+                        console.log(err);
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: "Unable to create account, check fields and try again", life: 3000 });
+                    }
                 }
             });
 
