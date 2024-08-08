@@ -15,6 +15,10 @@ export class EmployeeService {
     return this.http.get(this.url + 'api/users', { observe: 'response' });
   }
 
+  getEmployeeById(id: string) {
+    return this.http.get(this.url + 'api/users/' + id, { observe: 'response' });
+  }
+
   createEmployee(employee: Employee) {
     return this.http.post(this.url + 'api/users', employee, { observe: 'response' });
   }

@@ -43,7 +43,7 @@
                         </td>
                         <td style="width:30%; min-width:10rem; max-width: 20%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                             <span class="p-column-title">Display Name</span>
-                            <a href="/Users/{{employee.id}}" title="{{employee.displayName || employee.id}}">
+                            <a href="/employeedetail/{{employee.id}}" title="{{employee.displayName || employee.id}}">
                                 {{ (employee.displayName || employee.id) | slice:0:20 }}{{ (employee.displayName || employee.id).length > 20 ? '...' : '' }}
                             </a>
                         </td>
