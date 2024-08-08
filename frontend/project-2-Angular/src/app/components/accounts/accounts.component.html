@@ -69,7 +69,6 @@
 
         <p-dialog [(visible)]="accountDialog" [style]="{width: '450px'}" header="Account Details" [modal]="true" class="p-fluid">
             <ng-template pTemplate="content">
-                <form #accountForm="ngForm" (ngSubmit)="onSubmit(accountForm)">
                     <div class="field">
                         <label for="identity">Identity</label>
                         <p-dropdown [options]="users" [(ngModel)]="account.identity.value" name="identity" placeholder="Select Identity" [filter]="true" optionLabel="label" optionValue="value" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !account.identity.value}"></p-dropdown> 
@@ -122,9 +121,8 @@
                     </div>
                     <div class="p-dialog-footer">
                         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-                        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" [disabled]="accountForm.invalid" (click)="saveAccount()"></button>
+                        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="onSubmit()"></button>
                     </div>
-                </form>
             </ng-template>
         </p-dialog>
 

@@ -63,8 +63,6 @@ export class AccountsComponent implements OnInit {
 
     loading: boolean = false;
 
-    creatingAccount: boolean;
-
     constructor(private accountService: AccountService, private employeeService: EmployeeService, private messageService: MessageService) {}
 
     ngOnInit() {
@@ -167,7 +165,6 @@ export class AccountsComponent implements OnInit {
         this.account = this.defaultAccount;
         this.submitted = false;
         this.accountDialog = true;
-        this.creatingAccount = true;
     }
 
     deleteSelectedAccounts() {
@@ -207,9 +204,9 @@ export class AccountsComponent implements OnInit {
     }
 
     hideDialog() {
+        event.preventDefault();
         this.accountDialog = false;
         this.submitted = false;
-        this.creatingAccount = false;
     }
 
     onSubmit(form: any) {
@@ -237,7 +234,6 @@ export class AccountsComponent implements OnInit {
             });
 
         this.accountDialog = false;
-        this.creatingAccount = false;
     }
 
     findIndexById(id: string): number {
