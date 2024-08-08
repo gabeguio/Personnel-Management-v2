@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Employee } from '../Models/employee';
 
 @Injectable()
 export class AccountService {
@@ -11,6 +10,10 @@ export class AccountService {
   
   getAllAccounts() {
     return this.http.get(this.url + 'accounts', { observe: 'response' });
+  }
+
+  getAccountById(id: string) {
+    return this.http.get(this.url + 'accounts/' + id, { observe: 'response' });
   }
 
   createAccount(account: any) {
