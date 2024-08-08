@@ -212,28 +212,32 @@ export class AccountsComponent implements OnInit {
         this.creatingAccount = false;
     }
 
-    saveAccount() {
+    onSubmit(form: any) {
         this.submitted = true;
-    
-        if (this.account.identity.value?.trim() && this.account.application.value?.trim()) {
-            console.log(this.account);
-            this.accountService.createAccount(this.account)
-                .pipe(timeout(5000)) // 5 seconds timeout
-                .subscribe({
-                    next: (response) => {
-                        console.log(response);
-                        this.account.id = response.body['id'];
-                        this.accounts = [ ...this.accounts, this.account ];
-                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Account Created', life: 3000 });
-                    },
-                    error: (err) => {
-                        this.messageService.add({ severity: 'error', summary: 'Error', detail: "Unable to create account, check fields and try again", life: 3000 });
-                    }
-                });
+
+        if (form.valid) {
+            this.saveAccount();
+        }
+    }
+
+    saveAccount() {
+        console.log(this.account);
+        this.accountService.createAccount(this.account)
+            .pipe(timeout(5000)) // 5 seconds timeout
+            .subscribe({
+                next: (response) => {
+                    console.log(response);
+                    this.account.id = response.body['id'];
+                    this.accounts = [ ...this.accounts, this.account ];
+                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Account Created', life: 3000 });
+                },
+                error: (err) => {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: "Unable to create account, check fields and try again", life: 3000 });
+                }
+            });
 
         this.accountDialog = false;
         this.creatingAccount = false;
-        }
     }
 
     findIndexById(id: string): number {

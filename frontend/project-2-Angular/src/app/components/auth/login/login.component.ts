@@ -13,7 +13,8 @@ import { AuthService } from 'src/app/Services/auth.service';
             margin-right: 1rem;
             color: var(--primary-color) !important;
         }
-    `]
+    `],
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
@@ -22,13 +23,18 @@ export class LoginComponent {
     password!: string;
     username: string = '';
 
+    loading: boolean = false;
+
     constructor(private authService: AuthService, private router: Router, public layoutService: LayoutService) {}
 
     onSubmit() {
+        this.loading = true;
         this.authService.login(this.username, this.password).subscribe(success => {
         if (success) {
             this.router.navigate(['/']);
+            this.loading = false;
         } else {
+            this.loading = false;
             alert('Login failed');
         }
         });
