@@ -65,8 +65,6 @@ export class EmployeesComponent implements OnInit {
                 console.log(body.Resources);
                 this.employees = body.Resources;
 
-                this.employee.emails.at
-
                 this.cols = [
                     { field: 'displayName', header: 'Display Name' },
                     { field: 'emails', header: 'Email' },
