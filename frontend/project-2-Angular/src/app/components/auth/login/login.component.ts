@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -18,6 +20,17 @@ export class LoginComponent {
     valCheck: string[] = ['remember'];
 
     password!: string;
+    username: string = '';
 
-    constructor(public layoutService: LayoutService) { }
+    constructor(private authService: AuthService, private router: Router, public layoutService: LayoutService) {}
+
+    onSubmit() {
+        this.authService.login(this.username, this.password).subscribe(success => {
+        if (success) {
+            this.router.navigate(['/']);
+        } else {
+            alert('Login failed');
+        }
+        });
+    }
 }

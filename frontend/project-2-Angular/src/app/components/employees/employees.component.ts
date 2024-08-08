@@ -195,7 +195,7 @@ export class EmployeesComponent implements OnInit {
                             this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Employee Updated', life: 3000 });
                         },
                         error: (err) => {
-                            this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message, life: 3000 });
+                            this.messageService.add({ severity: 'error', summary: 'Error', detail: "Unable to update employee, check fields and try again", life: 3000 });
                         }
                     });
             } else if (this.creatingEmployee) {
@@ -209,7 +209,7 @@ export class EmployeesComponent implements OnInit {
                             this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Employee Created', life: 3000 });
                         },
                         error: (err) => {
-                            this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message, life: 3000 });
+                            this.messageService.add({ severity: 'error', summary: 'Error', detail: "Unable to create employee, check fields and try again", life: 3000 });
                         }
                     });
             }

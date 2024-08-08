@@ -2,6 +2,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AppLayoutComponent } from "./layout/app.layout.component"; 
+import { AuthGuard } from './Services/auth.guard';
 
 @NgModule({
     imports: [
@@ -9,10 +10,10 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
             {
                 path: '', component: AppLayoutComponent,
                 children: [
-                    { path: '', loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule) },
-                    { path: 'employees', loadChildren: () => import('./components/employees/employees.module').then(m => m.EmployeesModule) },
-                    { path: 'employeedetail/:id', loadChildren: () => import('./components/employee-detail/employee-detail.module').then(m => m.EmployeeDetailModule) },
-                    { path: 'accounts', loadChildren: () => import('./components/accounts/accounts.module').then(m => m.AccountsModule) },
+                    { path: '', canActivate: [AuthGuard], loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule) },
+                    { path: 'employees', canActivate: [AuthGuard], loadChildren: () => import('./components/employees/employees.module').then(m => m.EmployeesModule) },
+                    { path: 'employeedetail/:id', canActivate: [AuthGuard], loadChildren: () => import('./components/employee-detail/employee-detail.module').then(m => m.EmployeeDetailModule) },
+                    { path: 'accounts', canActivate: [AuthGuard], loadChildren: () => import('./components/accounts/accounts.module').then(m => m.AccountsModule) },
                     { path: 'uikit', loadChildren: () => import('./demo/components/uikit/uikit.module').then(m => m.UIkitModule) },
                     { path: 'utilities', loadChildren: () => import('./demo/components/utilities/utilities.module').then(m => m.UtilitiesModule) },
                     { path: 'documentation', loadChildren: () => import('./demo/components/documentation/documentation.module').then(m => m.DocumentationModule) },
@@ -20,8 +21,8 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) }
                 ]
             },
-            { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
-            { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
+            { path: 'auth', loadChildren: () => import('./components/auth/auth.module').then(m => m.AuthModule) },
+            { path: 'landing', loadChildren: () => import('./components/landing/landing.module').then(m => m.LandingModule) },
             { path: 'notfound', component: NotfoundComponent },
             { path: '**', redirectTo: '/notfound' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })
