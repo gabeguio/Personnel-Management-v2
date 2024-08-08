@@ -6,7 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import java.util.Collections;
 
-
+/**
+ * Service class for managing Identities.
+ * Provides methods to create, read, update, and delete identities by communicating with an Angular application.
+ */
 @Service
 public class UserService
 {
@@ -21,6 +24,12 @@ public class UserService
     @Value("${sp.password}")
     private String pass;
 
+    /**
+     * Method responsible for creating an HTTP entity with proper data to create an identity.
+     *
+     * @param user in JSON format as a String.
+     * @return the response body from the SCIM API with the data of created identity.
+     */
     public String createUser(String user)
     {
         HttpHeaders headers = new HttpHeaders();
@@ -39,6 +48,12 @@ public class UserService
 
     }
 
+    /**
+     * Method responsible for creating an HTTP entity with proper data to delete an identity.
+     *
+     * @param userId String of an Identity ID.
+     * @return the response body from the SCIM API with the data of deleted user
+     */
     public String deleteUser(String userId)
     {
         HttpHeaders headers = new HttpHeaders();
@@ -53,6 +68,11 @@ public class UserService
         return response.getBody();
     }
 
+    /**
+     * Method responsible for returning all identities.
+     *
+     * @return the response body from the SCIM API with a list of all identities
+     */
     public String getAllUsers()
     {
         HttpHeaders headers = new HttpHeaders();
@@ -67,6 +87,12 @@ public class UserService
         return response.getBody();
     }
 
+    /**
+     * Method responsible for returning a single identity according to its ID
+     *
+     * @param userId String of the identity ID
+     * @return the response body from the SCIM API with the requested Identity
+     */
     public String getUserById(String userId)
     {
         HttpHeaders headers = new HttpHeaders();
@@ -81,6 +107,13 @@ public class UserService
         return response.getBody();
     }
 
+    /**
+     * Method responsible for creating an HTTP entity with proper data to update an identity.
+     *
+     * @param userId String of the identity ID
+     * @param body in JSON format as a String.
+     * @return the response body from the SCIM API with the data of updated identity
+     */
     public String updateUser(String userId, String body)
     {
         HttpHeaders headers = new HttpHeaders();

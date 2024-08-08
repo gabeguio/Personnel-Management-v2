@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * Provides endpoints for creating, reading, updating, and deleting accounts.
  */
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("api/accounts")
 public class AccountsController
 {
