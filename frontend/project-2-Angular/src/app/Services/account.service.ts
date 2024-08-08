@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Employee } from '../Models/employee';
 import { AuthService } from './auth.service';
-import { AccountDetail } from '../Models/accountDetails'; // Import the 'Account' class
+import { AccountDetail } from '../Models/accountDetails';
+import { A } from '@fullcalendar/core/internal-common';
 
 @Injectable()
 export class AccountService {
@@ -22,8 +24,8 @@ export class AccountService {
     return this.http.get(this.url + 'api/accounts/' + id, { headers: this.getHeaders(), observe: 'response' });
   }
 
-  createAccount(account: AccountDetail) {
-    return this.http.post(this.url + 'api/accounts', account, { headers: this.getHeaders(), observe: 'response' });
+  createAccount(accountDetails: AccountDetail) {
+    return this.http.post(this.url + 'api/accounts', accountDetails, { headers: this.getHeaders(), observe: 'response' });
   }
 
   deleteAccount(id: string) {
