@@ -180,9 +180,10 @@ export class AccountsComponent implements OnInit {
         this.deleteAccountsDialog = false;
         this.accounts = this.accounts.filter(val => !this.selectedAccounts.includes(val));
         for (let i = 0; i < this.selectedAccounts.length; i++) {
-            this.accountService.deleteAccount(this.selectedAccounts[i].id);
+            this.accountService.deleteAccount(this.selectedAccounts[i].id).subscribe({ next: (response) => {
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Account Deleted', life: 3000 });
+            } });
         }
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Accounts Deleted', life: 3000 });
         this.selectedAccounts = [];
     }
 

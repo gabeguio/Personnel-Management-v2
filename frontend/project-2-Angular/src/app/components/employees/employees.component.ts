@@ -151,9 +151,10 @@ export class EmployeesComponent implements OnInit {
         this.deleteEmployeesDialog = false;
         this.employees = this.employees.filter(val => !this.selectedEmployees.includes(val));
         for (let i = 0; i < this.selectedEmployees.length; i++) {
-            this.employeeService.deleteEmployee(this.selectedEmployees[i].id);
+            this.employeeService.deleteEmployee(this.selectedEmployees[i].id).subscribe({ next: (response) => {
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Employee Deleted', life: 3000 });
+            } });
         }
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Employees Deleted', life: 3000 });
         this.selectedEmployees = [];
     }
 
